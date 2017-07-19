@@ -1,6 +1,10 @@
 import os
 import time
 from slackclient import SlackClient
+import random
+
+from facts import facts
+from triggers import triggers
 
 
 # spiderbot's ID as an environment variable
@@ -8,7 +12,7 @@ BOT_ID = os.environ.get("SPIDER_FACTS_ID")
 
 # constants
 AT_BOT = "<@" + BOT_ID + ">"
-EXAMPLE_COMMAND = "do"
+# EXAMPLE_COMMAND = "do"
 
 # instantiate Slack & Twilio clients
 slack_client = SlackClient(os.environ.get('SPIDER_FACTS_TOKEN'))
@@ -20,10 +24,7 @@ def handle_command(command, channel):
         are valid commands. If so, then acts on the commands. If not,
         returns back what it needs for clarification.
     """
-    response = "Not sure what you mean. Use the *" + EXAMPLE_COMMAND + \
-               "* command with numbers, delimited by spaces."
-    if command.startswith(EXAMPLE_COMMAND):
-        response = "Sure...write some more code then I can do that!"
+    response = "My creator has not taught me any commands."
     slack_client.api_call("chat.postMessage", channel=channel, text=response, as_user=True)
 
 
@@ -36,10 +37,20 @@ def parse_slack_output(slack_rtm_output):
     output_list = slack_rtm_output
     if output_list and len(output_list) > 0:
         for output in output_list:
-            if output and 'text' in output and AT_BOT in output['text']:
+            if output and 'text' in output and any(trigger in output['text'] for trigger in triggers):
                 # return text after the @ mention, whitespace removed
-                return output['text'].split(AT_BOT)[1].strip().lower(), output['channel']
+                return True, output['channel']
     return None, None
+
+
+def post_fact(channel):
+    """
+        Will only get called if a trigger word was detected.
+        This function randomly selects a fact from the facts list
+        and posts it to the given channel.
+    """
+    response = random.choice(facts)
+    slack_client.api_call("chat.postMessage", channel=channel, text=response, as_user=True)
 
 
 if __name__ == "__main__":
