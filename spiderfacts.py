@@ -37,7 +37,7 @@ def parse_slack_output(slack_rtm_output):
     output_list = slack_rtm_output
     if output_list and len(output_list) > 0:
         for output in output_list:
-            if output and 'text' in output and any(trigger in output['text'] for trigger in triggers):
+            if output and 'user' in output and output['user'] != BOT_ID and 'text' in output and any(trigger in output['text'].lower() for trigger in triggers):
                 # return text after the @ mention, whitespace removed
                 return True, output['channel']
     return None, None
@@ -60,7 +60,7 @@ if __name__ == "__main__":
         while True:
             command, channel = parse_slack_output(slack_client.rtm_read())
             if command and channel:
-                handle_command(command, channel)
+                post_fact(channel)
             time.sleep(READ_WEBSOCKET_DELAY)
     else:
         print("Connection failed. Invalid Slack token or bot ID?") 

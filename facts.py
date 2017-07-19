@@ -1,4 +1,6 @@
-facts = [",
+# -*- coding: utf-8 -*-
+
+facts = [
     "There are approximately 38,000 known species of spiders. Scientists believe there are probably as many more to be discovered.",
     "Spiders are found on every continent except Antarctica.",
     "An estimated 1 million spiders live in one acre of land. The number might be closer to 3 million in the tropics. It is estimated that a human is never more than 10 feet away from a spider—ever.",
