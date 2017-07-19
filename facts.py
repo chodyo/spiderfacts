@@ -82,7 +82,6 @@ facts = [
     "Unlike insects, spiders do not have antennas.",
     "A web is sticky because of glue droplets the spider deposits on it. These droplets are three times thinner than the diameter of a single hair. Scientists describe these droplets as being similar to chewing gum: they just keep stretching and stretching.",
     "Spider webs are not passive traps. Instead, because of electrically conducive glue spread across their surface, webs spring towards their prey. Scientists also found that the glue spirals on the web distort Earth’s electric field within a few millimeters of the web.",
-    "Setting a spider free may not be the more humane option",
     "Most spiders found in homes have adapted to life indoors. They have little chance of surviving outdoors.",
     "British singer Katie Melua went to a doctor after she heard a “shuffling” in her ear. The doctor discovered that a jumping spider was living in her. She believes the spider climbed into earbud earphones she had used on a flight the previous week.",
     "Spiders are blamed for all kinds of bumps, rashes, and growths. However, unlike mosquitoes or ticks, spiders don’t feed on human blood and they have no reason to bite a human unless they feel threatened or surprised. Additionally, spiders do not typically bite sleeping humans."
