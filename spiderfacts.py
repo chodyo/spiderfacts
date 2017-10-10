@@ -1,7 +1,8 @@
 import os
 import time
-from slackclient import SlackClient
 import random
+
+from slackclient import SlackClient
 
 from facts import facts
 from triggers import triggers
@@ -37,10 +38,19 @@ def parse_slack_output(slack_rtm_output):
     output_list = slack_rtm_output
     if output_list and len(output_list) > 0:
         for output in output_list:
-            if output and 'user' in output and output['user'] != BOT_ID and 'text' in output and any(trigger in output['text'].lower() for trigger in triggers):
-                # return text after the @ mention, whitespace removed
+            if has_trigger(output):
                 return True, output['channel']
     return None, None
+
+
+def has_trigger(output):
+    if output:
+        # make sure the bot can't trigger itself
+        if 'user' in output and output['user'] != BOT_ID:
+            # check if a trigger keyword was used
+            if 'text' in output and any(trigger in output['text'].lower() for trigger in triggers):
+                return True
+    return False
 
 
 def post_fact(channel):
