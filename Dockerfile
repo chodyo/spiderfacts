@@ -12,4 +12,4 @@ CMD [ "python", "./src/spiderfacts.py" ]
 
 
 # docker build -t spiderfacts .
-# docker run SPIDER_FACTS_TOKEN=########### spiderfacts
+# docker run -e SPIDER_FACTS_TOKEN=xoxb-############-######################## spiderfacts
