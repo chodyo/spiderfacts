@@ -1,10 +1,10 @@
 # spiderfacts
 
-#### Slack bot that blurts out spider facts when a key word is triggered. Bot based on (mattmakai's work)[https://github.com/mattmakai/slack-starterbot]
+#### Slack bot that blurts out spider facts when a key word is triggered. Bot based on [mattmakai's work](https://github.com/mattmakai/slack-starterbot)
 
 ## Installation necessities
 
-1.  Create `spiderfacts` bot on your (slack team)[https://slack.com/apps/new/A0F7YS25R-bots].
+1.  Create `spiderfacts` bot on your [slack team](https://slack.com/apps/new/A0F7YS25R-bots).
 1.  Place the bot into whatever channels you wish it to be a member of.
 1.  Copy the API token into the `SPIDER_FACTS_TOKEN` environment variable on the machine where the code will run.
 1.  Run `spiderfacts.py` whenever you want your bot to be active.
